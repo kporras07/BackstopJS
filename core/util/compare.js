@@ -66,8 +66,7 @@ module.exports = function (config) {
     return compareImage(referencePath, testPath, config.resembleOutputOptions)
       .then(function logCompareResult (data) {
         pair.diff = data;
-
-        if (data.isSameDimensions && data.misMatchPercentage <= pair.misMatchThreshold) {
+        if (data.misMatchPercentage <= pair.misMatchThreshold) {
           Test.status = 'pass';
           logger.success('OK: ' + pair.label + ' ' + pair.fileName);
           data = null;
